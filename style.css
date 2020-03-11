@@ -1,0 +1,18 @@
+#button-container {
+  padding: 20px 0;
+}
+
+#port {
+  padding: 0 10px;
+  font-size: 14px;
+}
+
+#start, #stop {
+  padding: 10px;
+  font-size: 14px;
+  width: 45%;
+}
+
+#process-container {
+
+}

@@ -1,13 +1,16 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const SerialPort = require("serialport");
+const robot = require('robotjs');
 
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 400,
+    height: 400,
     webPreferences: {
+      nodeIntegration:true,
       preload: path.join(__dirname, 'preload.js')
     }
   })
@@ -16,7 +19,9 @@ function createWindow () {
   mainWindow.loadFile('index.html')
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
+
+  let contents = mainWindow.webContents;
 }
 
 // This method will be called when Electron has finished

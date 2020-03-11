@@ -1,22 +1,88 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
-  "devDependencies": {
-    "electron": "^8.1.1"
-  }
+     "name": "electron-quick-start",
+     "version": "1.0.0",
+     "description": "A minimal Electron application",
+     "main": "main.js",
+     "scripts": {
+          "start": "electron .",
+          "rebuild": "npm rebuild --runtime=electron --target=8.1.1 --disturl=https://atom.io/download/atom-shell --abi=48",
+          "build:osx": "build --mac",
+          "build:linux": "npm run build:linux32 && npm run build:linux64",
+          "build:linux32": "build --linux --ia32",
+          "build:linux64": "build --linux --x64",
+          "build:win": "npm run build:win32 && npm run build:win64",
+          "build:win32": "build --win --ia32",
+          "build:win64": "build --win --x64"
+     },
+     "build": {
+          "productName": "XK3190",
+          "appId": "kr.co.XK3190.www",
+          "asar": true,
+          "protocols": {
+               "name": "XK3190",
+               "schemes": [
+                    "XK3190"
+               ]
+          },
+          "mac": {
+               "target": [
+                    "default"
+               ],
+               "icon": "./electron-root/favicon.ico"
+          },
+          "dmg": {
+               "title": "tournant",
+               "icon": "./electron-root/favicon.ico"
+          },
+          "win": {
+               "target": [
+                    "zip",
+                    "nsis"
+               ],
+               "icon": "./electron-root/favicon.ico"
+          },
+          "linux": {
+               "target": [
+                    "AppImage",
+                    "deb",
+                    "rpm",
+                    "zip",
+                    "tar.gz"
+               ],
+               "icon": "./electron-root/favicon.ico"
+          },
+          "nsis": {
+               "oneClick": false,
+               "allowToChangeInstallationDirectory": false,
+               "installerLanguages": [
+                    "en_US",
+                    "ko_KR"
+               ],
+               "language": "1042"
+          },
+          "directories": {
+               "buildResources": "resources/installer/",
+               "output": "build/",
+               "app": "."
+          }
+     },
+     "repository": "https://github.com/electron/electron-quick-start",
+     "keywords": [
+          "Electron",
+          "quick",
+          "start",
+          "tutorial",
+          "demo"
+     ],
+     "author": "GitHub",
+     "license": "CC0-1.0",
+     "devDependencies": {
+          "electron": "^8.1.1",
+          "electron-builder": "^22.4.0",
+          "electron-rebuild": "^1.10.1"
+     },
+     "dependencies": {
+          "robotjs": "^0.6.0",
+          "serialport": "^8.0.7"
+     }
 }
